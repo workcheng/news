@@ -9,7 +9,8 @@ Page({
       { text: "财经", id: "cj" }, { text: "娱乐", id: "yl" },
       { text: "军事", id: "js" }, { text: "体育", id: "ty" },
       { text: "其他", id: "other" }],
-    newsResult:[]
+    newsResult:[],
+    isHide:"gn"
   },
 
   /**
@@ -17,8 +18,15 @@ Page({
    */
   onLoad: function (options) {
     this.getResult("gn",this)
-    // 定义函数
-    
+  }, getDefaultImage(event){
+    console.info(event)
+    if (event.type=="error"){
+      let result = this.data.newsResult
+      result[event.target.dataset.errorimg].firstImage = "/images/snow-bg.png"
+      this.setData({
+        newsResult: result
+      })
+    }
   },
   getResult(param,weixin){
     wx.request({
@@ -33,65 +41,44 @@ Page({
         console.log(res.data)
         var util = require('../../utils/util.js')
         res.data.result.forEach((item, index) => {
-          item.source = item.source.split('/')[0]
+          if (item.source) {
+            item.source = item.source.split('/')[0]
+          } else {
+            item.source = ""
+          }
+          
           item.date = util.formatTime2(new Date(item.date))
+          if (!item.firstImage){
+            item.firstImage =  "/images/snow-bg.png"
+          }
         })
         weixin.setData({
           newsResult: res.data.result
         })
+      },
+      complete:()=>{
+        wx.stopPullDownRefresh()
       }
     })
   },
   tapMessage(event) {
-    console.log(event)
+    this.setData({
+      isHide: event.target.id
+    })
     this.getResult(event.target.id, this)
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
+  //事件处理函数
+  bindViewTap: function (event) {
+    console.log(event)
+    wx.navigateTo({
+      url: '../detail/detail?id=' + event.currentTarget.id
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
+    this.getResult(this.data.isHide, this)
   }
 })

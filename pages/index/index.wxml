@@ -1,23 +1,30 @@
 <view>
   <view class="container">
-    <view class="titleBar">
-        <view class="titleBar-list" wx:for="{{titleBarText}}" wx:for-item="item" id="{{item.id}}" bindtap="tapMessage">{{item.text}}<text decode="true" class="line">&nbsp;</text>
-        </view>
-    </view>
+    <scroll-view scroll-x class="scroll-view">
+      <view class="titleBar">
+          <view class="titleBar-list" wx:for="{{titleBarText}}" wx:for-item="item" id="{{item.id}}" bindtap="tapMessage">{{item.text}}
+          <view style="visibility:{{isHide==item.id?'visible':'hidden'}}" class="line"><text decode="true">&nbsp;</text></view>
+          </view>
+      </view>
+    </scroll-view>
     <view class="body">
         <view wx:for="{{newsResult}}"  wx:for-index="idx" wx:for-item="newsItem">
-          <view wx:if="{{idx==0}}" class="imageView">
-            <image class="banner-bg" src="/images/snow-bg.png" mode="scaleToFill"></image>
+          <view wx:if="{{idx==0}}" id="{{newsItem.id}}" class="imageView" bindtap="bindViewTap">
+            <image class="banner-bg" src="{{newsItem.firstImage}}" data-errorimg="{{idx}}" mode="scaleToFill" binderror="getDefaultImage"></image>
             <view class="banner-bg-tip">热点</view>
             <view class="banner-title">{{newsItem.title}}</view>
-            <view class="banner-source">{{newsItem.source}}</view>
-            <view class="banner-time">{{newsItem.date}}</view>
+            <view class="first-source-time">
+              <view class="banner-source">{{newsItem.source}}</view>
+              <view class="banner-time">{{newsItem.date}}</view>
+            </view>
           </view>
-          <view class="news-list">
+          <view wx:if="{{idx!=0}}" id="{{newsItem.id}}" class="news-list" bindtap="bindViewTap">
               <view class="news-list-title">{{newsItem.title}}</view>
-              <view class="news-list-source">{{newsItem.source}}</view>
-              <view class="news-list-time">{{newsItem.date}}</view>
-              <image class="news-list-image" src="/images/snow-bg.png" mode="scaleToFill"></image>
+              <view class="source-time">
+                <view class="news-list-source">{{newsItem.source}}</view>
+                <view class="news-list-time">{{newsItem.date}}</view>
+              </view>
+              <image class="news-list-image" src="{{newsItem.firstImage}}" data-errorimg="{{idx}}" mode="scaleToFill" binderror="getDefaultImage"></image>
           </view>
         </view>
      </view>

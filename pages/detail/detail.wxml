@@ -1,0 +1,15 @@
+<view class="detail">
+  <view class="title">{{title}}</view>
+  <view class="title-foot">
+    <view class="title-foot-source-time">
+      <view class="title-foot-source">{{source}}</view>
+      <view class="title-foot-time">{{date}}</view>
+    </view>
+    <view class="title-foot-read">阅读 {{readCount}}</view>
+  </view>
+  <view class="paragraph">
+    <text class="first">{{content[0].text}}</text>
+    <image class="detail-image" src="{{firstImage}}" data-errorimg="{{idx}}" mode="scaleToFill" binderror="getDefaultImage"></image>
+    <text class="second">{{content[1].text}}</text>
+  </view>
+</view>

@@ -8,6 +8,10 @@
   padding-bottom: 15rpx;
 }
 
+.scroll-view{
+  background-color: #00a1e9;
+}
+
 .titleBar-list {
   display:flex;
   flex-direction:column;
@@ -46,7 +50,7 @@
   height: 300rpx;
   width: 720rpx;
   text-align: center;
-  background-color: yellow;
+  /*background-color: yellow;*/
 }
 .banner-bg{
   position: absolute;
@@ -74,8 +78,14 @@
   font-size: 24rpx;
   line-height: 33.6rpx;
 }
-.banner-source{
+.first-source-time{
+  display: flex;
   position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+.banner-source{
+  position: relative;
   bottom: 10rpx;
   left: 20rpx;
   color: #666;
@@ -83,9 +93,9 @@
   line-height: 28rpx;
 }
 .banner-time{
-  position: absolute;
+  position: relative;
   bottom: 10rpx;
-  left: 120rpx;
+  left: 30rpx;
   color: #666;
   font-size: 20rpx;
   line-height: 28rpx;
@@ -111,8 +121,14 @@
   width: 500rpx;
   text-align: left;
 }
-.news-list-source{
+.source-time{
+  display: flex;
   position: absolute;
+  margin-top: 120rpx;
+  left: 0rpx;
+}
+.news-list-source{
+  position: relative;
   bottom: 20rpx;
   left: 20rpx;
   color: #666;
@@ -120,9 +136,9 @@
   line-height: 28rpx;
 }
 .news-list-time{
-  position: absolute;
+  position: relative;
   bottom: 20rpx;
-  left: 120rpx;
+  left: 30rpx;
   color: #666;
   font-size: 20rpx;
   line-height: 28rpx;
