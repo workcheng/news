@@ -40,7 +40,7 @@ Page({
         if (item.source) {
           item.source = item.source.split('/')[0]
         } else {
-          item.source = ""
+          item.source = "未知来源"
         }
         item.date = util.formatTime2(new Date(item.date))
         if (!item.firstImage) {
@@ -60,10 +60,11 @@ Page({
   getDefaultImage(event) {
     console.info(event)
     if (event.type == "error") {
-      let result = this.data.firstImage
-      result = "/images/snow-bg.png"
+      
+      let result = this.data.content
+      result[event.target.dataset.errorimg].src = "/images/snow-bg.png"
       this.setData({
-        firstImage: result
+        content: result
       })
     }
   }

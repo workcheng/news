@@ -8,8 +8,9 @@
     <view class="title-foot-read">阅读 {{readCount}}</view>
   </view>
   <view class="paragraph">
-    <text class="first">{{content[0].text}}</text>
-    <image class="detail-image" src="{{firstImage}}" data-errorimg="{{idx}}" mode="scaleToFill" binderror="getDefaultImage"></image>
-    <text class="second">{{content[1].text}}</text>
+    <view  wx:for="{{content}}" wx:for-item="item"  wx:for-index="idx" class="paragraph-item">
+      <text wx:if="{{item.type=='p'}}" class="first">{{item.text}}</text>
+      <image wx:if="{{item.type=='image'}}" class="detail-image" src="{{item.src}}" data-errorimg="{{idx}}" mode="scaleToFill" binderror="getDefaultImage"></image>
+    </view>
   </view>
 </view>

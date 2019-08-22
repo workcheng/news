@@ -1,6 +1,7 @@
 .detail{
   margin-left:15rpx;
   margin-right:15rpx; 
+  margin-bottom: 25rpx;
 }
 .title{
   margin-top: 24rpx;
@@ -42,16 +43,16 @@
   margin-bottom: 20rpx; 
 }
 .paragraph{
+  text-align: left;
   margin-top: 40rpx;
   font-size: 25rpx;
-  line-height: 32rpx;
-  opacity: 0.7;
+  line-height: 30rpx;
+}
+.paragraph-item{
+    margin-top: 20rpx;
 }
 .first{
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-}
-.second{
+  opacity: 0.7;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }

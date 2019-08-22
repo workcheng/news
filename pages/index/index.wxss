@@ -17,7 +17,7 @@
   flex-direction:column;
   color: white;
   width: 120rpx;
-  font-size: 36rpx;
+  font-size: 35rpx;
   line-height: 42rpx;
 }
 .line{
@@ -63,20 +63,28 @@
 
 .banner-bg-tip{
   position: absolute;
-  color: wheat;
+  color: white;
   background-color: red;
   top: 0rpx;
   right: 0rpx;
-  font-size: 30rpx;
-  line-height: 42rpx;
+  font-size: 25rpx;
+  line-height: 30rpx;
+  padding: 10rpx;
+  opacity: 0.5;
+  border-bottom-left-radius: 0.8em;
 }
 .banner-title{
+  text-align: left;
   position: absolute;
   bottom: 40rpx;
   left: 20rpx;
   color: white;
-  font-size: 24rpx;
-  line-height: 33.6rpx;
+  font-size: 25rpx;
+  line-height: 30rpx;
+  background-color: gray;
+  margin-right: 20rpx;
+  padding: 5rpx; 
+  opacity: 0.85;
 }
 .first-source-time{
   display: flex;
@@ -116,8 +124,8 @@
   top: 20rpx;
   left: 20rpx;
   color: black;
-  font-size: 24rpx;
-  line-height: 33.6rpx;
+  font-size: 25rpx;
+  line-height: 30rpx;
   width: 500rpx;
   text-align: left;
 }
